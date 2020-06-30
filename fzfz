@@ -75,7 +75,7 @@ fi
 RECENT_DIRS="{ $SCRIPT_PATH/recentdirs.sh }"
 RECENTLY_USED_DIRS="{ $RECENT_DIRS | $REVERSER | sed 's/^[[:digit:].]*[[:space:]]*//' }"
 
-FZF_COMMAND="${FZF_BIN_PATH} --height ${FZF_TMUX_HEIGHT:-40%} ${FZFZ_EXTRA_OPTS} --no-sort --tiebreak=end,index -m --preview='$FZFZ_PREVIEW_COMMAND | head -\$LINES'"
+FZF_COMMAND="${FZF_BIN_PATH} --height ${FZF_TMUX_HEIGHT:-40%} ${FZFZ_EXTRA_OPTS} --no-sort --tiebreak=end,index -m --reverse"
 
 COMMAND="{ $RECENTLY_USED_DIRS ; $SUBDIRS ; $EXTRA_DIRS; } | $FZFZ_UNIQUIFIER | $FZF_COMMAND"
 eval $COMMAND
