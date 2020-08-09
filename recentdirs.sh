@@ -23,7 +23,7 @@ elif [[ $FZFZ_RECENT_DIRS_TOOL == "autojump" ]]; then
     fi
     autojump -s | $REVERSER | tail +8 | $REVERSER | awk '{print $2}'
 elif [[ $FZFZ_RECENT_DIRS_TOOL == "fasd" ]]; then
-    fasd -dl -t 2>&1 && exit 0 || exit 0
+    fasd -dl -t 2>&1 | sed "s#^$HOME#~#" && exit 0 || exit 0
 else
     echo "Unrecognized recent dirs tool '$FZFZ_RECENT_DIRS_TOOL', please set \$FZFZ_RECENT_DIRS_TOOL correctly."
     exit 1

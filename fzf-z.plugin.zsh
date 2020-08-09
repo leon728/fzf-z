@@ -7,7 +7,7 @@ FZFZ_SCRIPT_PATH=${0:a:h}
 
 __fzfz() {
     $FZFZ_SCRIPT_PATH/fzfz | while read item; do
-        printf '%q ' "$item"
+        printf '%q ' "${item/\~/$HOME}"
     done
     echo
 }
