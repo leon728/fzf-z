@@ -73,9 +73,9 @@ else
 fi
 
 RECENT_DIRS="{ $SCRIPT_PATH/recentdirs.sh }"
-RECENTLY_USED_DIRS="{ $RECENT_DIRS | $REVERSER }"
+RECENTLY_USED_DIRS="{ $RECENT_DIRS }"
 
-FZF_COMMAND="${FZF_BIN_PATH} --height ${FZF_TMUX_HEIGHT:-40%} ${FZFZ_EXTRA_OPTS} --no-sort --tiebreak=end,index -m --reverse"
+FZF_COMMAND="${FZF_BIN_PATH} --height ${FZF_TMUX_HEIGHT:-40%} ${FZFZ_EXTRA_OPTS} --no-sort --tiebreak=end,index -m --reverse --tac"
 
 COMMAND="{ $RECENTLY_USED_DIRS ; $SUBDIRS ; $EXTRA_DIRS; } | $FZFZ_UNIQUIFIER | $FZF_COMMAND"
 eval $COMMAND

@@ -14,7 +14,7 @@ if [[ $FZFZ_RECENT_DIRS_TOOL == "z" ]]; then
     fi
 
     source "$SCRIPT_PATH/z.sh"
-    _z -l 2>&1 && exit 0 || exit 0
+    _z -t 2>&1 | sed -e "s|.*\s\+||" -e "s|^$HOME|~|" && exit 0 || exit 0
 elif [[ $FZFZ_RECENT_DIRS_TOOL == "autojump" ]]; then
     if [[ $OSTYPE == darwin* && -z $(whence tac) ]]; then
         REVERSER='tail -r'
